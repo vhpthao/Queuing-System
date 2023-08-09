@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: Nunito, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.btnDX{
+  display: flex;
+  width: 176px;
+  padding: 12px;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border: none;
+}
