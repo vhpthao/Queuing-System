@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import logo from '../img/logo.jpg';
 import { Button, Input } from 'antd';
-import '../css/datlaimk.css';
+import './dangnhap.css';
 import h2 from '../img/h2.jpg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig'; 
 
@@ -31,6 +31,10 @@ function QuenMK() {
     }
   };
 
+  const handleHuy = () => {
+    navigate('/dangnhap');
+  }
+
   return (
     <div style={{ backgroundColor: 'var(--white, #FFF)' }}>
       <div className='bgLeft'>
@@ -46,7 +50,7 @@ function QuenMK() {
             style={{ width: '400px' }}
           />
           <div style={{ display: 'flex' }} className='btnDLMK'>
-            <Button className='btnHuy'><Link to={'/dangnhap'}>Hủy</Link></Button>
+            <Button className='btnHuy' onClick={handleHuy}>Hủy</Button>
             <Button className='btnTiepTuc' onClick={handleTiepTuc}>Tiếp tục</Button>
           </div>
         </div>

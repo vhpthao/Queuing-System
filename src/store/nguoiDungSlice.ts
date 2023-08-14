@@ -1,43 +1,82 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Dispatch } from 'redux';
+import { collection, doc, DocumentData, DocumentSnapshot, getDoc, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig'; // Đảm bảo import db từ firebaseConfig
 
-export interface NguoiDung {
-  tenNguoiDung:  string | null; // Sử dụng kiểu union string | null
-  matKhau: string;
-}
+export type TableDataItemNguoiDung = {
+  key: string;
+  hoTen: string;
+  vaiTro: string;
+  trangThaiHD: string;
+  tenDN: string;
+  sdt: string;
+  email: string;
+};
 
-interface NguoiDungState {
-  currentUser: NguoiDung | null;
-  error: string | null;
-}
-
-const initialState: NguoiDungState = {
-  currentUser: null,
-  error: null,
+export type NguoiDungState = {
+  nguoiDungList: TableDataItemNguoiDung[];
+  selectedND: TableDataItemNguoiDung | null;
+  isUpdating: boolean;
 };
 
 const nguoiDungSlice = createSlice({
   name: 'nguoiDung',
-  initialState,
+  initialState: {
+    nguoiDungList: [],
+    selectedND: null,
+    isUpdating: false,
+  } as NguoiDungState,
   reducers: {
-    setUser: (state, action: PayloadAction<NguoiDung>) => {
-      state.currentUser = {
-        tenNguoiDung: action.payload.tenNguoiDung !== null ? action.payload.tenNguoiDung : '',
-        matKhau: action.payload.matKhau,
-      };
-      state.error = null;
+    setNguoiDungData: (state, action: PayloadAction<TableDataItemNguoiDung[]>) => {
+      state.nguoiDungList = action.payload;
     },
-    clearUser: (state) => {
-      state.currentUser = null;
+    setSelectedND: (state, action: PayloadAction<TableDataItemNguoiDung | null>) => {
+      state.selectedND = action.payload;
     },
-    setError: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
+    setIsUpdatingND: (state, action: PayloadAction<boolean>) => {
+      state.isUpdating = action.payload;
     },
   },
 });
 
-export const { setUser, clearUser, setError, clearError } = nguoiDungSlice.actions;
+export const { setNguoiDungData, setSelectedND, setIsUpdatingND } = nguoiDungSlice.actions;
+
+export const fetchNguoiDungDataFromFirebase = () => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'nguoiDung'));
+
+      const data = querySnapshot.docs.map((doc) => ({
+        key: doc.id,
+        ...doc.data(),
+      })) as TableDataItemNguoiDung[];
+
+      dispatch(setNguoiDungData(data));
+    } catch (error) {
+      console.log('Error fetching data from Firebase:', error);
+    }
+  };
+};
+
+// Hàm để lựa chọn thiết bị và cập nhật selectedTB
+export const selectND = (key: string) => {
+  return async (dispatch: Dispatch<any>, getState: () => any) => {
+    try {
+      const nguoiDungCollection = collection(db, 'nguoiDung');
+      const nguoiDungDoc = doc(nguoiDungCollection, key);
+      const docSnapshot: DocumentSnapshot<DocumentData> = await getDoc(nguoiDungDoc);
+
+      if (docSnapshot.exists()) {
+        const selectedData = docSnapshot.data() as TableDataItemNguoiDung;
+        dispatch(setSelectedND(selectedData));
+        dispatch(setIsUpdatingND(true)); // Đánh dấu đang cập nhật
+      } else {
+        dispatch(setSelectedND(null));
+      }
+    } catch (error) {
+      console.log('Error selecting nguoidung:', error);
+    }
+  };
+};
 
 export default nguoiDungSlice.reducer;
