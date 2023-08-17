@@ -1,0 +1,189 @@
+.right{
+    background-color:rgb(246,246,246,1);
+    width: '1225px'
+}
+
+.nQLDVThemDV{
+    color: var(--orange-orange-500, #FF7506);
+    /* 24/24 Bold */
+    font-family: Nunito, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+    margin-left: -950px;
+    margin-top: 0px;
+}
+
+.scThemDV{
+
+}
+
+.nTTDV{
+    color: var(--orange-orange-500, #FF7506);
+margin-bottom: 0px;
+/* 20/20 Bold */
+font-family: Nunito, sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 30px; /* 150% */
+margin-left: -900px;
+padding-top: 10px;
+}
+
+.nMaDV{
+    margin-left: -330px;
+}
+
+.ipMaDVThem{
+    width:450px;
+    margin-left: 30px;
+}
+
+.nTenDVThem{
+    margin-left: -330px;
+}
+
+.nMoTaThem{
+    margin-left: -300px;
+}
+
+.ipMotaThem{
+    width: 450px; 
+    margin-left: 100px;
+    height: 300px;
+}
+
+.nQuyTacCSThem{
+    margin-left: -920px;
+    color: var(--orange-orange-500, #FF7506);
+/* 20/20 Bold */
+font-family: Nunito, sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 30px; /* 150% */
+margin-bottom: 0px;
+}
+
+.kcQuyTacCS{
+    margin-left: 30px;
+}
+.nTangTDTu{
+    font-weight: 500;
+    margin-right: 20px;
+    margin-left:20px;
+}
+
+.ipTangTDTu{
+    width: 80px; 
+    height: 40px;
+}
+
+.nDen{
+    font-weight: 500;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.ipDen{
+    width: 80px;
+    height: 40px;
+}
+
+.nPrefixThem{
+    font-weight: 500;
+    margin-right: 95px; 
+    margin-left: 20px;
+}
+
+.ipPrefixThem{
+    width: 80px;
+    height: 40px;
+    margin-left: -7px;
+}
+
+.nSurfixThem{
+    font-weight: 500;
+    margin-right: 95px; 
+    margin-left: 20px;
+}
+
+.ipSurfixThem{
+    width: 80px;
+    height: 40px;
+    margin-left: -7px;
+}
+
+.nResetMNThem{
+    display: flex;
+    padding-bottom: 100px !important; 
+}
+
+.nResetMNn{
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.kcCacNutThemDV{
+    display: flex;
+    margin-left: 420px;
+}
+
+.btnHuyBoThemDV{
+    border-radius: 8px;
+    border: 1.5px solid var(--orange-orange-400, #FF9138);
+    background: var(--orange-orange-50, #FFF2E7);
+    height: 45px;
+    /* down */
+    box-shadow: 0px 0px 6px 0px #E7E9F2;
+    width: 150px;
+    height: 45px;
+    color: var(--orange-orange-400, #FF9138);
+    font-family: Nunito, sans-serif !important;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.btnThemDVThem{
+    border-radius: 8px;
+  background: var(--orange-orange-400, #FF9138);
+  color: var(--white, #FFF);
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  width: 150px;
+  line-height: normal;
+  height: 45px;
+  /* down */
+  box-shadow: 0px 0px 6px 0px #E7E9F2;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+
+.bgThemDV{
+    width: 1100px ;
+    height: 520px;
+    background-color: #FFF;
+    margin-left: 50px;
+}
+
+.nTruongBatBuocThemDV{
+    margin-top: -100px;
+    margin-left: -820px;
+    color: var(--gray-gray-300, #7E7D88);
+
+/* 14/14 Reg */
+font-family: Nunito, sans-serif;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px; /* 150% */
+}
+
+.nTTHDThemDV{
+    margin-left: -200px;
+}
