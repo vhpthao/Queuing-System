@@ -12,15 +12,12 @@ import { db } from '../../firebase/firebaseConfig';
 
 
 const loaiThietBi = [{ value: 'Kiosk', label: 'Kiosk' }, { value: 'Display counter', label: 'Display counter' }];
-const loaiHoatDong = [{ value: 'Hoạt động', label: 'Hoạt động' }, { value: 'Ngưng hoạt động', label: 'Ngưng hoạt động' }];
-const loaiKetNoi = [{ value: 'Kết nối', label: 'Kết nối' }, { value: 'Mất kết nối', label: 'Mất kết nối' }];
 const dichvuSD = [{ value: 'Khám tổng quát', label: 'Khám tổng quát' }, { value: 'Khám tai mũi họng', label: 'Khám tai mũi họng' },  { value: 'Khám mắt', label: 'Khám mắt' }];
 
 function CapNhatTB() {
   const dispatch = useDispatch();
   const { key } = useParams();
 
-  // Gọi fetchDataFromFirebase khi component được gắn kết
   useEffect(() => {
     dispatch(fetchDataFromFirebase() as any);
 
@@ -57,18 +54,13 @@ function CapNhatTB() {
 
     const thietBiCollection = collection(db, 'thietBi');
     const thietBiDoc = doc(thietBiCollection, key);
-
-    // Truy vấn dữ liệu từ Firestore sử dụng thietBiDoc
   getDoc(thietBiDoc)
   .then((docSnapshot) => {
     if (docSnapshot.exists()) {
-      // Cập nhật dữ liệu trong Firestore
       updateDoc(thietBiDoc, updatedData)
         .then(() => {
           console.log('Đã cập nhật dữ liệu thành công');
-          // Cập nhật thiết bị đã chọn trong trạng thái Redux với dữ liệu mới
       dispatch(selectTB({ ...selectedTB, ...updatedData }) as any);
-          // Reset các trường dữ liệu trong form
           setMaTB('');
           setLoaiTB('');
           setTenTB('');
@@ -115,13 +107,9 @@ function CapNhatTB() {
       <div className='right' style={{ backgroundColor: 'rgb(246,246,246,1)', width: '1225px' }}>
         <Header />
         <p className='nQuanLyTTTB'>Quản lý thiết bị</p>
-
-{/* giao diện thêm thiết bị */}
 <div>
   <section className='scThemTB'>
     <p className='nThongTinTB'>Thông tin thiết bị</p>
-
-    {/* h1 */}
     <div style={{ display: 'flex' }}>
       <div>
         <p className='nMaTB'>
@@ -144,7 +132,6 @@ function CapNhatTB() {
         />
       </div>
     </div>
-    {/* h2 */}
     <div style={{ display: 'flex' }}>
       <div>
         <p className='nTenTB'>
@@ -160,8 +147,6 @@ function CapNhatTB() {
         <Input size='large' className='ipTenDN' value={tenDN} onChange={(e) => setTenDN(e.target.value)} />
       </div>
     </div>
-
-    {/* h3 */}
     <div style={{ display: 'flex' }}>
       <div>
         <p className='nDiaChiIP'>
@@ -175,37 +160,6 @@ function CapNhatTB() {
           Mật khẩu <span style={{ color: 'red' }}>*</span>
         </p>
         <Input size='large' className='ipMatKhau' value={matKhau} onChange={(e) => setMatKhau(e.target.value)} />
-      </div>
-    </div>
-
-    {/* h4 */}
-    <div style={{ display: 'flex' }}>
-      <div>
-        <p className='nTinhTrangHDThem'>
-          Tình trạng hoạt động <span style={{ color: 'red' }}>*</span>
-        </p>
-        <Select
-          placeholder='Chọn trạng thái hoạt động'
-          className='slTinhTrangHD'
-          options={loaiHoatDong}
-          size='large'
-          value={ttHD || undefined} // Thử sử dụng giá trị mặc định
-          onChange={(value) => setTtHD(value)}
-        />
-      </div>
-
-      <div className='kcTrangThaiKN'>
-        <p className='nTrangThaiKN'>
-          Trạng thái kết nối <span style={{ color: 'red' }}>*</span>
-        </p>
-        <Select
-          placeholder='Chọn trạng thái kết nối'
-          style={{ width: 500, textAlign: 'left' }}
-          options={loaiKetNoi}
-          size='large'
-          value={ttKN || undefined}
-          onChange={(value) => setTtKN(value)}
-        />
       </div>
     </div>
 

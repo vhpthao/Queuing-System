@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Dispatch } from 'redux';
 import { collection, doc, DocumentData, DocumentSnapshot, getDoc, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/firebaseConfig'; // Đảm bảo import db từ firebaseConfig
+import { db } from '../firebase/firebaseConfig'; 
 
 export type TableDataItemNguoiDung = {
   key: string;
@@ -11,12 +11,16 @@ export type TableDataItemNguoiDung = {
   tenDN: string;
   sdt: string;
   email: string;
+  hinh: any;
 };
+
 
 export type NguoiDungState = {
   nguoiDungList: TableDataItemNguoiDung[];
   selectedND: TableDataItemNguoiDung | null;
   isUpdating: boolean;
+  currentUser: TableDataItemNguoiDung | null; 
+
 };
 
 const nguoiDungSlice = createSlice({
@@ -25,6 +29,8 @@ const nguoiDungSlice = createSlice({
     nguoiDungList: [],
     selectedND: null,
     isUpdating: false,
+    currentUser: null, 
+    vaiTroList: [], 
   } as NguoiDungState,
   reducers: {
     setNguoiDungData: (state, action: PayloadAction<TableDataItemNguoiDung[]>) => {
@@ -36,10 +42,13 @@ const nguoiDungSlice = createSlice({
     setIsUpdatingND: (state, action: PayloadAction<boolean>) => {
       state.isUpdating = action.payload;
     },
+    setCurrentUser: (state, action: PayloadAction<TableDataItemNguoiDung | null>) => {
+      state.currentUser = action.payload;
+    },
   },
 });
 
-export const { setNguoiDungData, setSelectedND, setIsUpdatingND } = nguoiDungSlice.actions;
+export const { setNguoiDungData, setSelectedND, setIsUpdatingND,setCurrentUser } = nguoiDungSlice.actions;
 
 export const fetchNguoiDungDataFromFirebase = () => {
   return async (dispatch: Dispatch<any>) => {
@@ -58,7 +67,7 @@ export const fetchNguoiDungDataFromFirebase = () => {
   };
 };
 
-// Hàm để lựa chọn thiết bị và cập nhật selectedTB
+
 export const selectND = (key: string) => {
   return async (dispatch: Dispatch<any>, getState: () => any) => {
     try {
@@ -69,7 +78,7 @@ export const selectND = (key: string) => {
       if (docSnapshot.exists()) {
         const selectedData = docSnapshot.data() as TableDataItemNguoiDung;
         dispatch(setSelectedND(selectedData));
-        dispatch(setIsUpdatingND(true)); // Đánh dấu đang cập nhật
+        dispatch(setIsUpdatingND(true));
       } else {
         dispatch(setSelectedND(null));
       }

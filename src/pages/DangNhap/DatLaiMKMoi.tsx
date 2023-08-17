@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
-import './dangnhap.css';
 import logo from '../img/logo.jpg';
-import h2 from '../img/h2.jpg';
+import h2 from './h2.jpg'
+import './datlaimkmoi.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { updateDoc, doc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig';
@@ -12,8 +12,8 @@ function DatLaiMKMoi() {
   const [nhapLaiMatKhauMoi, setNhapLaiMatKhauMoi] = useState('');
   const [thongBao, setThongBao] = useState('');
 
-  const [tenDangNhap, setTenDangNhap] = useState(''); // Thêm biến tại đây
-  const [matKhau, setMatKhau] = useState(''); // Thêm biến tại đây
+  const [tenDangNhap, setTenDangNhap] = useState('');
+  const [matKhau, setMatKhau] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,44 +24,40 @@ function DatLaiMKMoi() {
       setThongBao('Mật khẩu mới không khớp. Vui lòng nhập lại.');
       return;
     }
-  
+
     try {
       const usersCollection = collection(db, 'nguoiDung');
       const querySnapshot = await getDocs(usersCollection);
-  
-      // Tìm người dùng với email tương ứng trong Firestore
+
       const foundUser = querySnapshot.docs.find(doc => doc.data().email === email);
-  
+
       if (foundUser) {
         const userDocRef = doc(usersCollection, foundUser.id);
-  
-        // Cập nhật mật khẩu mới vào Firestore
+
         await updateDoc(userDocRef, { matKhau: matKhauMoi });
-  
+
         console.log('Mật khẩu đã được cập nhật vào Firestore');
-  
-        // Kiểm tra và sử dụng biến email trước khi gọi hàm setTenDangNhap
+
         if (email !== null) {
           setTenDangNhap(email);
         }
-  
-        // Cập nhật lại mã xác thực trước khi chuyển hướng đến trang đăng nhập
+
         setMatKhau(matKhauMoi);
-  
+
         navigate('/dangnhap');
       } else {
-        setThongBao('Email không tồn tại trong hệ thống.'); // Email không tồn tại
+        setThongBao('Email không tồn tại trong hệ thống.');
       }
     } catch (error) {
       console.error('Lỗi cập nhật mật khẩu:', error);
       setThongBao('Có lỗi xảy ra khi cập nhật mật khẩu. Vui lòng thử lại sau.');
     }
   };
-  
+
 
   return (
     <div style={{ backgroundColor: 'var(--white, #FFF)' }}>
-      <div className='bgLeft'>
+      <div className='DatLaiMKMoiLeft'>
         <div className='left'>
           <img src={logo} alt="logo" className='logo' />
           <p className='datlaimk' style={{ textAlign: 'center' }}>Đặt lại mật khẩu</p>
@@ -73,8 +69,8 @@ function DatLaiMKMoi() {
           <Button className='btnXacNhan' onClick={handleXacNhan}>Xác nhận</Button>
         </div>
       </div>
-      <div className='right'>
-        <img src={h2} alt="h2" className='h2' />
+      <div className='DatLaiMKMoiRight'>
+        <img src={h2} alt="h22" className='h22' />
       </div>
     </div>
   );

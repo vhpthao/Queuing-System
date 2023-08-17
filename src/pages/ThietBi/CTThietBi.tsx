@@ -77,7 +77,7 @@ function CTThietBi() {
           </div>
 
           <p className='chuCTTBID' style={{ marginLeft: '-920px' }}>Dịch vụ sử dụng:</p>
-          <p style={{ marginLeft: '-950px' }}><p>{dvSD}</p></p>
+          <p style={{ marginLeft: '-920px' }}><p>{dvSD}</p></p>
 
         </section>
 

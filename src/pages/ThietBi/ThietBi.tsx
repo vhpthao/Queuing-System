@@ -62,9 +62,10 @@ const columns: ColumnsType<DataType> = [
     title: 'Trạng thái hoạt động',
     dataIndex: 'ttHD',
     key: 'ttHD',
-    render: (_, record) => (
+    render: (text: string, record) => (
       <span>
-        {getStatusIcon(record.ttHD)} {record.ttHD}
+        {getStatusIcon(record.ttHD)}{' '}
+        {getDefaultValue(text, 'Ngưng hoạt động')}
       </span>
     ),
   },
@@ -72,9 +73,10 @@ const columns: ColumnsType<DataType> = [
     title: 'Trạng thái kết nối',
     dataIndex: 'ttKN',
     key: 'ttKN',
-    render: (_, record) => (
+    render: (text: string, record) => (
       <span>
-        {getStatusIcon(record.ttKN)} {record.ttKN}
+        {getStatusIcon(record.ttKN)}{' '}
+        {getDefaultValue(text, 'Mất kết nối')}
       </span>
     ),
   },
@@ -111,6 +113,10 @@ const customArrow = (
     <path d="M6 9L12 15L18 9H6Z" stroke="#FF7506" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 );
+
+const getDefaultValue = (value: any, defaultValue: any) => {
+  return value || defaultValue;
+};
 
 function ThietBi() {
   const dispatch = useDispatch<Dispatch>();
@@ -210,7 +216,7 @@ function ThietBi() {
 
   const handlePageSizeChange = (current: number, size: number) => {
     setPageSize(size);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
 
@@ -234,32 +240,27 @@ function ThietBi() {
         <div>
           <Header />
           <p className='nDanhSachTB'>Danh sách thiết bị</p>
-
-          {/* chucnang */}
           <div style={{ display: 'flex' }}>
-            {/* p1 */}
             <div className='kcTrangThai'>
               <p className='nTrangThaiHD'>Trạng thái hoạt động</p>
               <Select
                 style={{ width: 250, textAlign: 'left' }}
                 options={ttHoatDong}
                 size='large'
-                defaultValue={defaultFilterStatusHD} // Sử dụng giá trị mặc định ở đây}
+                defaultValue={defaultFilterStatusHD}
                 onChange={(value) => {
                   setFilterStatusHD(value === 'Tất cả' ? null : value);
-                  setDefaultFilterStatusHD(value); // Cập nhật giá trị mặc định
+                  setDefaultFilterStatusHD(value);
                 }}
                 suffixIcon={customArrow} />
             </div>
-
-            {/* p2 */}
             <div className='kcTrangThaiKN'>
               <p className='nTrangThaiKNTB'>Trạng thái kết nối</p>
               <Select
                 style={{ width: 250, textAlign: 'left' }}
                 options={ttKetNoi}
                 size='large'
-                defaultValue={defaultFilterStatusKN} // Sử dụng giá trị mặc định ở đây
+                defaultValue={defaultFilterStatusKN}
                 onChange={(value) => {
                   setFilterStatusKN(value === 'Tất cả' ? null : value);
                   setDefaultFilterStatusKN(value);
@@ -267,7 +268,6 @@ function ThietBi() {
                 suffixIcon={customArrow} />
             </div>
 
-            {/* p3 */}
             <div className='kcTuKhoaTB'>
               <p style={{ marginLeft: '-185px' }}>Từ khóa</p>
               <Input

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import logo from '../img/logo.jpg';
 import { Button, Input } from 'antd';
 import './dangnhap.css';
-import h2 from '../img/h2.jpg';
+import'./quenmk.css'
+import h2 from './h2.jpg';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig'; 
@@ -19,11 +20,8 @@ function QuenMK() {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        // Email đúng, chuyển hướng tới trang "datlaimkmoi"
-        // Nếu email hợp lệ, chuyển đến trang DatLaiMKMoi với query param email
         navigate(`/datlaimkmoi?email=${encodeURIComponent(email)}`);
       } else {
-        // Email không tồn tại
         alert('Email không tồn tại');
       }
     } catch (error) {
@@ -37,7 +35,7 @@ function QuenMK() {
 
   return (
     <div style={{ backgroundColor: 'var(--white, #FFF)' }}>
-      <div className='bgLeft'>
+      <div className='QuenMKLeft'>
         <div className='left'>
           <img src={logo} alt="logo" className='logo' />
           <p className='datlaimk' style={{ textAlign: 'center' }}>Đặt lại mật khẩu</p>
@@ -47,7 +45,7 @@ function QuenMK() {
             onChange={(e) => setEmail(e.target.value)}
             width={20}
             size='large'
-            style={{ width: '400px' }}
+            className='ipEmailQuenMK'
           />
           <div style={{ display: 'flex' }} className='btnDLMK'>
             <Button className='btnHuy' onClick={handleHuy}>Hủy</Button>
@@ -55,7 +53,7 @@ function QuenMK() {
           </div>
         </div>
       </div>
-      <div className='right'>
+      <div className='QuenMKRight'>
         <img src={h2} alt="h2" className='h2' />
       </div>
     </div>

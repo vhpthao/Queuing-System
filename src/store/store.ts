@@ -3,19 +3,19 @@ import thunkMiddleware from 'redux-thunk';
 import nguoiDungReducer from './nguoiDungSlice';
 import thietBiReducer from './thietBiSlice';
 import dichVuReducer from './dichVuSlice';
+import vaiTroReducer from './vaiTroSlice'
+import capSoReducer from './capSoSlice';
 
-// Tạo store Redux
 const store = configureStore({
-  // Cấu hình reducer cho store
   reducer: {
     nguoiDung: nguoiDungReducer,
+    vaiTro: vaiTroReducer,
     thietBi: thietBiReducer,
     dichVu: dichVuReducer,
+    capSo: capSoReducer,
   },
-  // Sử dụng middleware Redux Thunk để xử lý các action bất đồng bộ
   middleware: [thunkMiddleware],
   
 });
 
-// Xuất store để có thể sử dụng trong các thành phần khác của ứng dụng
 export default store;

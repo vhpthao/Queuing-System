@@ -7,8 +7,6 @@ import Header from '../../layout/Header';
 import { db } from '../../firebase/firebaseConfig';
 
 const loaiThietBi = [{ value: 'Kiosk', label: 'Kiosk' }, { value: 'Display counter', label: 'Display counter' }];
-const ttHoatDong = [{ value: 'Hoạt động', label: 'Hoạt động' }, { value: 'Ngưng hoạt động', label: 'Ngưng kết nối' }];
-const ttKettNoi = [{ value: 'Kết nối', label: 'Kết nối' }, { value: 'Mất kết nối', label: 'Mất kết nối' }];
 const dichvuSD = [{ value: 'Khám tổng quát', label: 'Khám tổng quát' }, { value: 'Khám tai mũi họng', label: 'Khám tai mũi họng' },  { value: 'Khám mắt', label: 'Khám mắt' }];
 
 function ThemThietBi() {
@@ -60,13 +58,9 @@ function ThemThietBi() {
         <Header />
 
         <p className='nQuanLyTTTB'>Quản lý thiết bị</p>
-
-        {/* giao diện thêm thiết bị */}
         <div>
           <section className='scThemTB'>
             <p className='nThongTinTB'>Thông tin thiết bị</p>
-
-            {/* h1 */}
             <div style={{ display: 'flex' }}>
               <div>
                 <p className='nMaTB'>
@@ -89,7 +83,6 @@ function ThemThietBi() {
                 />
               </div>
             </div>
-            {/* h2 */}
             <div style={{ display: 'flex' }}>
               <div>
                 <p className='nTenTB'>
@@ -105,8 +98,6 @@ function ThemThietBi() {
                 <Input size='large' className='ipTenDN' value={tenDN} onChange={(e) => setTenDN(e.target.value)} />
               </div>
             </div>
-
-            {/* h3 */}
             <div style={{ display: 'flex' }}>
               <div>
                 <p className='nDiaChiIP'>
@@ -122,38 +113,6 @@ function ThemThietBi() {
                 <Input size='large' className='ipMatKhau' value={matKhau} onChange={(e) => setMatKhau(e.target.value)} />
               </div>
             </div>
-
-            {/* h4 */}
-            <div style={{ display: 'flex' }}>
-              <div>
-                <p className='nTinhTrangHDThem'>
-                  Tình trạng hoạt động <span style={{ color: 'red' }}>*</span>
-                </p>
-                <Select
-                  placeholder='Chọn trạng thái hoạt động'
-                  className='slTinhTrangHD'
-                  options={ttHoatDong}
-                  size='large'
-                  value={ttHD || undefined}
-                  onChange={(value) => setTtHD(value)}
-                />
-              </div>
-
-              <div className='kcTrangThaiKN'>
-                <p className='nTrangThaiKN'>
-                  Trạng thái kết nối <span style={{ color: 'red' }}>*</span>
-                </p>
-                <Select
-                  placeholder='Chọn trạng thái kết nối'
-                  style={{ width: 500, textAlign: 'left' }}
-                  options={ttKettNoi}
-                  size='large'
-                  value={ttKN || undefined}
-                  onChange={(value) => setTtKN(value)}
-                />
-              </div>
-            </div>
-
             <div style={{ display: 'flex' }}>
               <div>
                 <p className='nDichVuSD'>
