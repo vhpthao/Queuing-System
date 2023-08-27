@@ -1,0 +1,82 @@
+.nQuanLyDVDV{
+    color: var(--orange-orange-500, #FF7506);
+    /* 24/24 Bold */
+    font-family: Nunito, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+    margin-left: -950px;
+}
+
+.kcChonTGDV{
+    margin-left: 50px;
+}
+
+.right{
+    background-color: rgb(246,246,246,1);
+    width: 1225px;
+}
+
+.kcTrangThaiHDDV{
+    margin-left: 50px;
+}
+
+.nChonTGDV{
+    margin-left: -170px;
+}
+.nTrangThaiHD{
+    margin-left: -90px;
+}
+
+.fromDateDV{
+    height:43px;
+     margin-right: 20px;
+     width:130px;
+}
+
+.toDateDV{
+    height: 43px;
+    width:130px;
+}
+
+.kcTuKhoaDV{
+    margin-left: 200px;
+}
+
+.nTuKhoaDV{
+    margin-left: -180px;
+}
+
+.btnThemDVDV{
+    color: var(--orange-orange-500, #FF7506);
+    text-align: center;
+    font-family: Nunito, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px 0px 0px 8px;
+    background: var(--orange-orange-50, #FFF2E7);
+    margin-left: 70px;
+    margin-top: 30px;
+    /* down */
+    box-shadow: 0px 0px 6px 0px #E7E9F2;
+}
+
+.custom-table .ant-table-thead th {
+    background-color: orange !important; /* Màu cam cho phần thead */
+    color: white; /* Màu chữ cho phần thead */
+  }
+
+
+  .ant-table-thead th[data-key='chiTiet'],
+.ant-table-thead th[data-key='capNhat'] {
+  background-color: orange !important;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background: var(--orange-orange-50, #FFF2E7);
+  }  

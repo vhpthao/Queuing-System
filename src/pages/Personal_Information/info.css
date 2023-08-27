@@ -1,0 +1,76 @@
+.bgTTCaNhan{
+    height: 740px !important;
+}
+
+.scTTCaNhan{
+    border-radius: 12px;
+    background: var(--white, #FFF);
+    box-shadow: 0px 2px 6px 0px rgba(219, 219, 219, 0.50);
+    display: flex;
+    width: 1000px;
+    padding: 40px 24px 54px 24px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin-left: 50px;
+    margin-top: 100px;
+    height: 350px ;
+    }
+
+    .avatarTTCN{
+        width: 500px;
+        height: 500px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .kcP1CaNhan{
+        margin-left: -800px;
+    }
+
+    .kcP2CaNhan{
+        margin-left: 10px;
+    }
+
+    .kcP3CaNhan{
+        float: right;
+        margin-right: -800px;
+    }
+
+    .ktIP{
+        width: 300px;
+        background: var(--gray-gray-50, #EAEAEC);
+    }
+
+    .kcCMR{
+        margin-top: -50px;
+        margin-left: 50px;
+    }
+.camera-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .vTron {
+    margin-left: 150px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .mayAnh {
+    position: relative;
+    margin-left: -37px;
+    z-index: 3;
+  }
+
+  .hoTenND{
+    margin-top: 30px;
+    margin-left: -50px;
+    color: var(--gray-gray-500, #282739);
+    /* 24/24 Bold */
+    font-family: Nunito, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+  }
